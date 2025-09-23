@@ -7,7 +7,7 @@ export default function Home() {
      <h1>Examen II</h1>
 
      <Link href='/graficolineal'>Ir al grafico de valor promedio de productos por categoría</Link> 
-     <Link href='/graficopie' > Ir al grafico de producto x categoria</Link>
+     <Link href='/graficopie' > Ir al grafico de productos por marca</Link>
     
     </div>
   );
