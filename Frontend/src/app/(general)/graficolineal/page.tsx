@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,PointElement, LineElement } from 'chart.js';
-import { fetchEmpleadoDepto } from '@/app/Services/Api';
+import { fetchPromedioValorPorCategoria} from '@/app/Services/Api';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,PointElement, LineElement);
 
@@ -20,23 +20,23 @@ export default function page() {
 
   useEffect(()=>{
 
-    fetchEmpleadoDepto()
-    .then(data=>{
+   fetchPromedioValorPorCategoria()
+  .then(data => {
+    const labels = data.map((item: any) => item.categoryName);
+    const promedioValores = data.map((item: any) => item.avg_value);
 
-      const label= data.map((item:any)=> `${item.DEPARTMENT_ID}- ${item.JOB_ID}`)
-      const cantidadEmpleados= data.map((item:any)=> item.total_empleados);
+    setCharData({
+      labels: labels,
+      datasets: [{
+        label: 'Promedio de valor por categoría',
+        data: promedioValores,
+        borderColor: 'rgba(80, 230, 21, 1)',
+        fill: true,
+      }]
+    });
+  })
+  .catch(() => alert("Ocurrió un error al obtener los datos"));
 
-      setCharData({
-        labels:label,
-        datasets:[{
-          label:'Cantidad de empleados por departamento-Puesto',
-          data:cantidadEmpleados,
-          borderColor:'rgba(180, 166, 42, 1)',
-          fill:true
-        }]
-      })
-    })
-    .catch(()=>alert("Ocurrio un error"))
 
   },[]);
 
@@ -47,13 +47,13 @@ export default function page() {
       {
         charData ? (
           <div>
-            <h2>Grafico lineal/ empleados por departamento</h2>
+            <h2>Grafico lineal de valor promedio de productos por categoría </h2>
             <Line data={charData}></Line>
           </div>
         )
         :
         (
-          <p>INformacion se esta cargando</p>
+          <p>Informacion se esta cargando</p>
         )
 
       }

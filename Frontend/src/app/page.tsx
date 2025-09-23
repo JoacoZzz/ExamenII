@@ -4,17 +4,11 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-     <h1>Integracion con graficas</h1>
+     <h1>Examen II</h1>
 
-     <Link href='/graficoBarra'>Ir al grafico de barra/ Salario x Depto</Link>
-     <Link href='/graficolineal'>Ir al grafico de Lineal/ Emplaeado x Depto</Link> 
-     <Link href='/graficodona'>Ir al grafico de Dona/ Salario x Depto</Link>
-     <br></br> 
-
-     <h1>Tarea</h1>
+     <Link href='/graficolineal'>Ir al grafico de valor promedio de productos por categoría</Link> 
      <Link href='/graficopie' > Ir al grafico de producto x categoria</Link>
-     <Link href='/graficoBarra2' > Ir al grafico de valor promedio producto x categoria</Link>
-     <Link href='/graficoHorizontal' > Ir al grafico de valor promedio producto x linecode</Link>
+    
     </div>
   );
 }
