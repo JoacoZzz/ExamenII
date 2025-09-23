@@ -56,6 +56,10 @@ app.get('/productos-por-marca', async (req, res) => {
     }
 });
 
+app.listen(5000, () => {
+    console.log('Aplicaicon iniciada en puerto 5000')
+})
+
 //Para poder trabajar con los campos con nombres que llevan un '.' entre sí, se renombré las columnas
 //en la BD para poder trabajar sin problemas, se alteró así:
 //ALTER TABLE products CHANGE `category.code` categoryCode VARCHAR(255);
